@@ -50,8 +50,6 @@ public class MyViewModel extends AndroidViewModel {
     }
 
     private void validation() {
-        if (i == 9) {
-            i = -1;
-        }
+        if (i == 9) i = -1;
     }
 }
