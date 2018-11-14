@@ -17,6 +17,7 @@ import com.coppermobile.mysampleusingmvvmlivedata.R;
 import com.coppermobile.mysampleusingmvvmlivedata.data.Dish;
 import com.coppermobile.mysampleusingmvvmlivedata.utils.IClickListener;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,43 +36,8 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.MyViewHolder> 
     }
 
     public void addData(List<Dish> dishList) {
-        if (this.dishList == null) {
-            this.dishList = dishList;
-            notifyItemRangeInserted(0, dishList.size());
-        } else {
-            DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
-                @Override
-                public int getOldListSize() {
-                    return DishAdapter.this.dishList.size();
-                }
-
-                @Override
-                public int getNewListSize() {
-                    return dishList.size();
-                }
-
-                @Override
-                public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-                    return DishAdapter.this.dishList.get(oldItemPosition).getId() == dishList.get(newItemPosition).getId();
-                }
-
-                @Override
-                public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-                    Dish project = dishList.get(newItemPosition);
-                    Dish old = dishList.get(oldItemPosition);
-                    return project.getId() == old.getId() && Objects.equals(project.getDishName(), old.getDishName());
-                }
-
-                @Nullable
-                @Override
-                public Object getChangePayload(int oldItemPosition, int newItemPosition) {
-                    return super.getChangePayload(oldItemPosition, newItemPosition);
-                }
-            });
-            this.dishList.clear();
-            this.dishList.addAll(dishList);
-            result.dispatchUpdatesTo(this);
-        }
+        this.dishList = dishList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -97,11 +63,6 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.MyViewHolder> 
                 iClickListener.onItemPressed(dish);
             }
         });
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull List<Object> payloads) {
-        super.onBindViewHolder(holder, position, payloads);
     }
 
     @Override

@@ -8,9 +8,8 @@ import android.support.annotation.NonNull;
 import java.io.Serializable;
 
 @Entity(tableName = "dish_table")
-public class Dish implements Serializable{
+public class Dish implements Serializable {
 
-    @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
@@ -70,12 +69,11 @@ public class Dish implements Serializable{
         return dishPrice;
     }
 
-    @NonNull
     public int getId() {
         return id;
     }
 
-    public void setId(@NonNull int id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

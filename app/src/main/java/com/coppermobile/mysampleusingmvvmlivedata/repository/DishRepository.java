@@ -2,15 +2,11 @@ package com.coppermobile.mysampleusingmvvmlivedata.repository;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
-import android.arch.lifecycle.Observer;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.coppermobile.mysampleusingmvvmlivedata.data.Comments;
 import com.coppermobile.mysampleusingmvvmlivedata.data.Dish;
 import com.coppermobile.mysampleusingmvvmlivedata.data.source.DataSource;
-import com.coppermobile.mysampleusingmvvmlivedata.data.source.remote.DishResponse;
 
 import java.util.List;
 
