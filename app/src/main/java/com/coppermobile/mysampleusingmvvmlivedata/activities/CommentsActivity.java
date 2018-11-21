@@ -1,8 +1,10 @@
 package com.coppermobile.mysampleusingmvvmlivedata.activities;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,7 +29,7 @@ import com.coppermobile.mysampleusingmvvmlivedata.utils.Helper;
 import com.coppermobile.mysampleusingmvvmlivedata.utils.IShowPopUpListener;
 import com.coppermobile.mysampleusingmvvmlivedata.viewmodels.CommentsViewModel;
 
-import java.util.Objects;
+import java.util.List;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -107,8 +109,11 @@ public class CommentsActivity extends AppCompatActivity implements IShowPopUpLis
     }
 
     private void observeViewModel(CommentsViewModel commentsViewModel) {
-        commentsViewModel.getAllComments(myDishId).observe(this, commentsList -> {
-            if (commentsList != null) commentAdapter.addData(commentsList);
+        commentsViewModel.getAllComments(myDishId).observe(this, new Observer<List<Comments>>() {
+            @Override
+            public void onChanged(@Nullable List<Comments> commentsList) {
+                if (commentsList != null) commentAdapter.addData(commentsList);
+            }
         });
     }
 
@@ -126,8 +131,8 @@ public class CommentsActivity extends AppCompatActivity implements IShowPopUpLis
             etComments.setText("");
 
             InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
-            if (inputManager != null) {
-                inputManager.hideSoftInputFromWindow(Objects.requireNonNull(this.getCurrentFocus()).getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            if (inputManager != null && this.getCurrentFocus() != null) {
+                inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             }
         }
     }

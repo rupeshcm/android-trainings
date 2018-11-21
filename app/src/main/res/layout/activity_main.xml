@@ -23,6 +23,12 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <include layout="@layout/content_main" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_dish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        android:background="@color/colorWhite"
+        android:scrollbars="vertical" />
 
 </LinearLayout>

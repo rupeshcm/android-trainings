@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements IClickListener {
         });
     }
 
-    public static DishViewModel obtainViewModel(FragmentActivity activity) {
+    public DishViewModel obtainViewModel(FragmentActivity activity) {
         ViewModelFactory factory = ViewModelFactory.getInstance(activity.getApplication());
         return ViewModelProviders.of(activity, factory).get(DishViewModel.class);
     }

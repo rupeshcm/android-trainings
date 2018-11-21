@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 @Entity(tableName = "comments_table")
 public class Comments {
 
-    @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "comment_id")
     private int id;

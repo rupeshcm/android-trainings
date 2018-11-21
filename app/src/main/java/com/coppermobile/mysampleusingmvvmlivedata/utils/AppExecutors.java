@@ -23,7 +23,7 @@ public class AppExecutors {
         this.mainThread = mainThread;
     }
 
-    public AppExecutors() {
+    AppExecutors() {
         this(new DiskIOThreadExecutor(), Executors.newFixedThreadPool(THREAD_COUNT), new MainThreadExecutor());
     }
 

@@ -57,10 +57,13 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.MyViewHolder> 
             holder.tvPrice.setText(String.format("₹%s", String.valueOf(dish.getDishPrice())));
         }
 
-        holder.rlContainer.setOnClickListener(v -> {
-            holder.itemView.setBackgroundResource(R.drawable.item_clicked);
-            if (iClickListener != null) {
-                iClickListener.onItemPressed(dish);
+        holder.rlContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.itemView.setBackgroundResource(R.drawable.item_clicked);
+                if (iClickListener != null) {
+                    iClickListener.onItemPressed(dish);
+                }
             }
         });
     }
