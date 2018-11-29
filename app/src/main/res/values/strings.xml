@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MySampleMVVMDataBindingLiveData</string>
+    <string name="image">Image</string>
+    <string name="delete">Delete</string>
+    <string name="write_comment">  Write Comment</string>
+    <string name="comment_added">Comment Added</string>
+    <string name="comment_deleted">Comment Deleted</string>
+    <string name="rupees_symbol">₹</string>
+</resources>
